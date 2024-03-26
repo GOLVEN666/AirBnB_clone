@@ -1,5 +1,5 @@
-#!/usr/bin/python3
-"""BaseModel class"""
+#!/usr/env/python3
+"""clase BaseModel"""
 
 from datetime import datetime
 import models
@@ -7,27 +7,29 @@ import uuid
 
 
 class BaseModel:
-    """BaseModel class representing common functionalities."""
+    """class BaseModel
+        Represent all the common functionalities of the classes in the project.
+        """
 
     def __init__(self, *args, **kwargs):
-        """Initialize a new BaseModel instance.
+        """Initialize a new BaseModel.
 
-        Args:
-            *args (any): Unused.
-            **kwargs (dict): Key/value pairs of attributes.
+            Args:
+                *args (any): Unused.
+                **kwargs (dict): Key/value pairs of attributes.
         """
         self.id = str(uuid.uuid4())
-        self.created_at = datetime.utcnow()
-        self.updated_at = datetime.utcnow()
-        
-        if kwargs:
+        self.created_at = datetime.now()
+        self.updated_at = datetime.now()
+        if len(kwargs) > 0:
             for key, value in kwargs.items():
                 if key in ["created_at", "updated_at"]:
-                    setattr(self, key, datetime.strptime(value, "%Y-%m-%dT%H:%M:%S.%f"))
+                    self.__dict__[key] = datetime.strptime(
+                        value, '%Y-%m-%dT%H:%M:%S.%f')
                 else:
-                    setattr(self, key, value)
-        
-        models.storage.new(self)
+                    self.__dict__[key] = value
+        else:
+            models.storage.new(self)
 
     def __str__(self):
         """Return the string representation of the BaseModel instance."""
