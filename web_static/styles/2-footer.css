@@ -1,23 +1,11 @@
 footer {
-    background-color: green;
-    position: fixed;
-    bottom: 0px;
-    height: 60px;
-    left: 0;
-    right: 0;
-    display: -webkit-box;
-    display: -moz-box;
-    display: -ms-flexbox;
-    display: -webkit-flex;
-    display: flex;
-    -webkit-box-align: center;
-    -moz-box-align: center;
-    -ms-flex-align: center;
-    -webkit-align-items: center;
-    align-items: center;
-    -webkit-box-pack: center;
-    -moz-box-pack: center;
-    -ms-flex-pack: center;
-    -webkit-justify-content: center;
-    justify-content: center;
+  width:100%;
+  height:60px;
+  background-color:#00FF00;
+  align-items:center;
+  text-align: center;
+  font-size: 9px;
+}
+p {
+  color: black;
 }
